@@ -66,7 +66,7 @@ cp -r $FOAM_TUTORIALS/incompressible/icoFoam/cavity/cavity .
 cd cavity 
 blockMesh 
 icoFoam 
-``
+```
 7. Copy tutorial
 ``` shell
 mkdir -p $FOAM_RUN 
