@@ -1,5 +1,5 @@
 ### @2018-12-15
-How to install OpenFOAM on Arch linux
+#### How to install OpenFOAM on Arch linux
 1. Enable the Loop Module
 
 check:
