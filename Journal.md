@@ -67,4 +67,9 @@ cd cavity
 blockMesh 
 icoFoam 
 ``
+7. Copy tutorial
+``` shell
+mkdir -p $FOAM_RUN 
+cp -r $FOAM_TUTORIALS $FOAM_RUN
+```
 
