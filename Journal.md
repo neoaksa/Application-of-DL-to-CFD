@@ -57,7 +57,7 @@ boundary
 
 #### Initial conditions
 Once setting up the mesh, we can run `blockMesh` under project folder, and get the inital status files(p and U) in a 0 sub-folder. Let's see the content of p:
-```` c
+``` c
 // dimensinSet is 7 scalars delimited by square brackets, here is m^2s^{-2} to get kinematic pressure
 dimensions      [0 2 -2 0 0 0 0];
 
@@ -81,6 +81,7 @@ boundaryField
         type            empty;
     }
 }
+
 ```
 
 
