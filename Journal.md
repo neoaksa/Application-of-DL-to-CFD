@@ -1,3 +1,8 @@
+### @2019-1-2
+#### OpenFOAM Structure
+![img](/img/OpenFOAM-structure.png)
+
+![folder structure](/img/foamFolderStructure.png)
 
 ### @2018-12-15
 #### How to install OpenFOAM on Arch linux
