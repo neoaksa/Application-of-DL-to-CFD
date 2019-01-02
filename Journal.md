@@ -4,6 +4,8 @@
 
 ![folder structure](/img/foamFolderStructure.png)
 
+reference: http://www.cfdyna.com/Home/OpenFOAM.html
+
 ### @2018-12-15
 #### How to install OpenFOAM on Arch linux
 1. Enable the Loop Module
