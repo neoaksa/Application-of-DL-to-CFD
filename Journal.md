@@ -6,6 +6,14 @@
 
 reference: http://www.cfdyna.com/Home/OpenFOAM.html
 
+The meaning of some important files:
+* `system/controlDict`: control time, reading & writing soltuion data.
+* `system/blockMeshDict`: describing the geometry
+* `contant/polyMesh`: describing the geometry of polyhedral
+* `0/p` or `0/U`: boundary condition setting and flow field initialization files. p for pressure, U for velocity. Unit of variable is a row vector with 7 elements in order of: _Mass Length Time Temperature Quantity Current Luminous Intensity_
+* `system/fvSchemes`: 
+* `system/fvSolution`:
+
 ### @2018-12-15
 #### How to install OpenFOAM on Arch linux
 1. Enable the Loop Module
