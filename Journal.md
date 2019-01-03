@@ -14,6 +14,12 @@ The meaning of some important files:
 * `system/fvSchemes`: 
 * `system/fvSolution`:
 
+#### Step by Step for OpenFOAM
+1. Use `blockMesh` utility to create geometry and mesh
+2. Viscous model and boundary conditions
+3. Slover setting
+4. Post-processing
+
 ### @2018-12-15
 #### How to install OpenFOAM on Arch linux
 1. Enable the Loop Module
