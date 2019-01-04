@@ -36,6 +36,9 @@ The meaning of some important files:
  * create file dummy file `foam.foam`
  * load this file by ParaView
  
+#### Others
+* `#inculde` is as same as in C
+
 
 ### @2018-12-15
 #### How to install OpenFOAM on Arch linux
