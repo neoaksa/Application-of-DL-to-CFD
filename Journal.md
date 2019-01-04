@@ -1,45 +1,3 @@
-### @2019-1-2
-#### OpenFOAM Structure
-![img](/img/OpenFOAM-structure.png)
-
-![folder structure](/img/foamFolderStructure.png)
-
-reference: http://www.cfdyna.com/Home/OpenFOAM.html
-
-The meaning of some important files:
-* `system/controlDict`: control time, reading & writing soltuion data.
-* `system/blockMeshDict`: describing the geometry
-* `constant/polyMesh`: describing the geometry of polyhedral
-* `0/p` or `0/U`: boundary condition setting and flow field initialization files. p for pressure, U for velocity. Unit of variable is a row vector with 7 elements in order of: _Mass Length Time Temperature Quantity Current Luminous Intensity_
-* `system/fvSchemes`: discretization schemes
-* `system/fvSolution`:
-
-#### Step by Step for OpenFOAM
-1. Use `blockMesh` utility to create geometry and mesh
- * `system/blockMeshDict`
-   * variables can be defined 
-   ``` c++
-   var(
-      vari1 10;
-      vari2 20;
-      vari3 #calc "$vari1+$var15";
-   vertices(
-      ($:var.vari3 0 0)
-   }
-   ```
-2. Viscous model and boundary conditions
- * `constant/transportProperties` or `constant/turbulenceProperties`
- * `0` folder
-3. Slover setting
- * `system/controlDict`
-4. Post-processing
- * create file dummy file `foam.foam`
- * load this file by ParaView
- 
-#### Others
-* `#inculde` is as same as in C
-
-
 ### @2018-12-15
 #### How to install OpenFOAM on Arch linux
 1. Enable the Loop Module
@@ -199,4 +157,44 @@ boundaryField
 }
 
 ```
+### @2019-1-2
+#### OpenFOAM Structure
+![img](/img/OpenFOAM-structure.png)
+
+![folder structure](/img/foamFolderStructure.png)
+
+reference: http://www.cfdyna.com/Home/OpenFOAM.html
+
+The meaning of some important files:
+* `system/controlDict`: control time, reading & writing soltuion data.
+* `system/blockMeshDict`: describing the geometry
+* `constant/polyMesh`: describing the geometry of polyhedral
+* `0/p` or `0/U`: boundary condition setting and flow field initialization files. p for pressure, U for velocity. Unit of variable is a row vector with 7 elements in order of: _Mass Length Time Temperature Quantity Current Luminous Intensity_
+* `system/fvSchemes`: discretization schemes
+* `system/fvSolution`:
+
+#### Step by Step for OpenFOAM
+1. Use `blockMesh` utility to create geometry and mesh
+ * `system/blockMeshDict`
+   * variables can be defined 
+   ``` c++
+   var(
+      vari1 10;
+      vari2 20;
+      vari3 #calc "$vari1+$var15";
+   vertices(
+      ($:var.vari3 0 0)
+   }
+   ```
+2. Viscous model and boundary conditions
+ * `constant/transportProperties` or `constant/turbulenceProperties`
+ * `0` folder
+3. Slover setting
+ * `system/controlDict`
+4. Post-processing
+ * create file dummy file `foam.foam`
+ * load this file by ParaView
+ 
+#### Others
+* `#inculde` is as same as in C
 
