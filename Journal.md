@@ -169,14 +169,14 @@ The meaning of some important files:
 * `system/controlDict`: control time, reading & writing soltuion data.
 * `system/blockMeshDict`: describing the geometry
 * `constant/polyMesh`: describing the geometry of polyhedral
-* `0/p` or `0/U`: boundary condition setting and flow field initialization files. p for pressure, U for velocity. Unit of variable is a row vector with 7 elements in order of: _Mass Length Time Temperature Quantity Current Luminous Intensity_
-* `system/fvSchemes`: discretization schemes
-* `system/fvSolution`:
+* `0/p` or `0/U`: boundary condition setting and flow field initialization files. p for pressure, U for velocity. Unit of variable is a row vector with 7 elements in order of: _Mass Length Time Temperature Quantity Current Luminous Intensity_. Other files in `0` folder: k - Kinematic energy, T - temperature.
+* `system/fvSchemes`: terms, schemes, numerical setting
+* `system/fvSolution`: tolerance, algorithms, and solvers controls
 
 #### Step by Step for OpenFOAM
 1. Pre-processing
 * definition of the `geometry` of the region and `grid` generation using `blockMesh` utility to create geometry and mesh
-  * `system/blockMeshDict`
+  * `system/blockMeshDict` for mesh generation
     * variables can be defined 
     ``` c++
     var(
@@ -188,18 +188,39 @@ The meaning of some important files:
     }
     ```
 * Viscous `model`, `fluid propeties` and `boundary conditions`
-  * `constant/transportProperties` or `constant/turbulenceProperties`
-  * `0` folder
+  * `constant/transportProperties` for fluid properties
+  ``` C++
+  // nu is the fluid kinematic viscosity, which is 0.01 m2/s for this example.
+  nu [ 0 2 -1 0 0 0 0 ] 0.01;
+  ```
+  * `constant/turbulenceProperties` for turbulence model selection
+  * `0` folder:
+     * dimensions: SI unite with a vector consists of 7 elements.
+     * internalField: uniform or non-uniform
+     * boundaryField: zeroGradient, fixedValue or empty(for side)
 2. Slover setting
  * four distinct streams of numerical solution tech: `finite difference, finite element, spectral methods and finite volume`. We only need to focus on `finite volumne`, which consists of the following steps:
     * Integration of the conservation of mass, energy and momentum equation over all the control volumes in the domain.
     * Discretization
     * iterative
- * `system/controlDict`
+ * `system/controlDict`: discretization scheme
+ * `system/fvSchemes`:the settings to the coupling method of pressure and velocity,
+the numerical methods, and final tolerance for convergence of that quantity
+ * `system/fvSolution`: time control, saving interval, file format...
 3. Post-processing
- * create file dummy file `foam.foam`
- * load this file by ParaView
+ * by typing the solver's name we can executing the solutions,e.g, icoFoam
+ * create file dummy file `foam.foam`, and execute `paraview foam.foam &` to visualze the result
+ * load this file by ParaView, the animation will look like this :
+ 
+ ![demo](/img/animation.0074.png)
+ 
  
 #### Others
 * `#inculde` is as same as in C
 
+### @20190103
+#### Case study
+* covert mesh to Openfoam SI unite
+``` shell
+fluentMeshToFoam elbow.msh
+```
