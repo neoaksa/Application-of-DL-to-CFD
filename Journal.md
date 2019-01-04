@@ -174,24 +174,29 @@ The meaning of some important files:
 * `system/fvSolution`:
 
 #### Step by Step for OpenFOAM
-1. Use `blockMesh` utility to create geometry and mesh
- * `system/blockMeshDict`
-   * variables can be defined 
-   ``` c++
-   var(
-      vari1 10;
-      vari2 20;
-      vari3 #calc "$vari1+$var15";
-   vertices(
-      ($:var.vari3 0 0)
-   }
-   ```
-2. Viscous model and boundary conditions
- * `constant/transportProperties` or `constant/turbulenceProperties`
- * `0` folder
-3. Slover setting
+1. Pre-processing
+* definition of the `geometry` of the region and `grid` generation using `blockMesh` utility to create geometry and mesh
+  * `system/blockMeshDict`
+    * variables can be defined 
+    ``` c++
+    var(
+       vari1 10;
+       vari2 20;
+       vari3 #calc "$vari1+$var15";
+    vertices(
+       ($:var.vari3 0 0)
+    }
+    ```
+* Viscous `model`, `fluid propeties` and `boundary conditions`
+  * `constant/transportProperties` or `constant/turbulenceProperties`
+  * `0` folder
+2. Slover setting
+ * four distinct streams of numerical solution tech: `finite difference, finite element, spectral methods and finite volume`. We only need to focus on `finite volumne`, which consists of the following steps:
+    * Integration of the conservation of mass, energy and momentum equation over all the control volumes in the domain.
+    * Discretization
+    * iterative
  * `system/controlDict`
-4. Post-processing
+3. Post-processing
  * create file dummy file `foam.foam`
  * load this file by ParaView
  
