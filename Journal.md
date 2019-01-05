@@ -209,11 +209,16 @@ the numerical methods, and final tolerance for convergence of that quantity
  * `system/fvSolution`: time control, saving interval, file format...
 3. Post-processing
  * by typing the solver's name we can executing the solutions,e.g, icoFoam
- * if mesh created by GAMBIT, we need to use `fluentMeshToFoam` to transfer mesh into `system/polyMesh`.
+ * if mesh created by __GAMBIT__, we need to use `fluentMeshToFoam` to transfer mesh into `system/polyMesh`.
  * create file dummy file `foam.foam`, and execute `paraview foam.foam &` to visualze the result
  * load this file by ParaView, the animation will look like this :
  
  ![demo](/img/demoparaview.png)
+ 
+ * we can also use command `refineMesh` to refine the mesh, the result looks like this:
+ 
+ ![demo](/img/demoparaview2.png)
+ 
  
  
 #### Others
