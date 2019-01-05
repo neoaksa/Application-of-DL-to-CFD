@@ -187,6 +187,16 @@ The meaning of some important files:
        ($:var.vari3 0 0)
     }
     ```
+    * If the domian is 2D, we only need to set grid in z-axis as 1:
+    ``` c++
+    blocks
+    (
+    hex (0 1 3 2 8 9 11 10) (25 10 1) simpleGrading (1 1 1)
+    hex (2 3 6 5 10 11 14 13) (25 40 1) simpleGrading (1 1 1)
+    hex (3 4 7 6 11 12 15 14) (100 40 1) simpleGrading (1 1 1)
+    );
+    ```
+    * After setting mesh by `blockMeshDic`, we need to run command `blockMesh` to create mesh.
 * Viscous `model`, `fluid propeties` and `boundary conditions`
   * `constant/transportProperties` for fluid properties
   ``` C++
@@ -194,6 +204,7 @@ The meaning of some important files:
   nu [ 0 2 -1 0 0 0 0 ] 0.01;
   ```
   * `constant/turbulenceProperties` for turbulence model selection
+  * `constant/thermophysicalProperties`for compressible gas whose material properties that vary with temperature.
   * `0` folder:
      * dimensions: SI unite with a vector consists of 7 elements.
      * internalField: uniform or non-uniform
@@ -209,7 +220,7 @@ the numerical methods, and final tolerance for convergence of that quantity
  * `system/fvSolution`: time control, saving interval, file format...
 3. Post-processing
  * by typing the solver's name we can executing the solutions,e.g, icoFoam
- * if mesh created by __GAMBIT__, we need to use `fluentMeshToFoam` to transfer mesh into `system/polyMesh`.
+ * if mesh created by __GAMBIT__, we need to use `fluentMeshToFoam` to transfer mesh into `system/polyMesh`. Otherwise, just run `blockMesh` to get mesh from `blockMeshDict`.
  * create file dummy file `foam.foam`, and execute `paraview foam.foam &` to visualze the result
  * load this file by ParaView, the animation will look like this :
  
@@ -219,14 +230,10 @@ the numerical methods, and final tolerance for convergence of that quantity
  
  ![demo](/img/demoparaview2.png)
  
- 
- 
 #### Others
 * `#inculde` is as same as in C
 
 ### @20190103
 #### Case study
-* covert mesh to Openfoam SI unite
-``` shell
-fluentMeshToFoam elbow.msh
-```
+1. Another case whose mesh create by `blockMeshDic`
+ ![demo](/img/demoparaview3.png)
