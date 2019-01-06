@@ -167,7 +167,8 @@ reference: http://www.cfdyna.com/Home/OpenFOAM.html
 
 The meaning of some important files:
 * `system/controlDict`: control time, reading & writing soltuion data.
-* `system/blockMeshDict`: describing the geometry
+* `system/blockMeshDict`: describing the geometry. Command `blockMesh` to generate mesh by this file.
+* `system/setFieldDict`: assign value to regions. Command `setFields` to call this setting.
 * `constant/polyMesh`: describing the geometry of polyhedral
 * `0/p` or `0/U`: boundary condition setting and flow field initialization files. p for pressure, U for velocity. Unit of variable is a row vector with 7 elements in order of: _Mass Length Time Temperature Quantity Current Luminous Intensity_. Other files in `0` folder: k - Kinematic energy, T - temperature.
 * `system/fvSchemes`: terms, schemes, numerical setting
@@ -197,6 +198,7 @@ The meaning of some important files:
     );
     ```
     * After setting mesh by `blockMeshDic`, we need to run command `blockMesh` to create mesh.
+    * `system/setFieldsDict`:is used by the tool setFields for patching (assign an amount to a region) in the simulation. In this file, we can find two sectors, one is `defaultFieldValues` which is a value assigned to whole domain; anonther is `regions` which a spec value to spec region. After run `setFields`, the value will be assigned and folder `0` will be changed as well.
 * Viscous `model`, `fluid propeties` and `boundary conditions`
   * `constant/transportProperties` for fluid properties
   ``` C++
