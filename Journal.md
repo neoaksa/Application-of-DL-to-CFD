@@ -204,6 +204,8 @@ The meaning of some important files:
   ``` C++
   // nu is the fluid kinematic viscosity, which is 0.01 m2/s for this example.
   nu [ 0 2 -1 0 0 0 0 ] 0.01;
+  // diffusion coefficient
+  DT [ 0 2 -1 0 0 0 0] 0.001;
   ```
   * `constant/turbulenceProperties` for turbulence model selection
   * `constant/thermophysicalProperties`for compressible gas whose material properties that vary with temperature.
