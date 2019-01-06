@@ -239,5 +239,26 @@ the numerical methods, and final tolerance for convergence of that quantity
 
 ### @20190103
 #### Case study
-1. Another case whose mesh create by `blockMeshDic`
- ![demo](/img/demoparaview3.png)
+tuturial can be found `tutorials/multiphase/interFoam/laminar/damBreak/damBreak/`
+We set water zone through `setFiledsDic`
+``` c++
+defaultFieldValues
+(
+// default without water
+    volScalarFieldValue alpha.water 0
+);
+
+regions
+(
+    boxToCell
+    {
+        box (0 0 -1) (0.1461 0.292 1);
+        fieldValues
+        (
+            //water zone
+            volScalarFieldValue alpha.water 1
+        );
+    }
+);
+```
+ ![demo](/img/ani.gif)
