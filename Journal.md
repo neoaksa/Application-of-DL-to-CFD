@@ -237,7 +237,7 @@ the numerical methods, and final tolerance for convergence of that quantity
 * use `paraview -block` to visualize `blockMeshdic` where we can find the order of points.
 
 ### Case study
-tuturial can be found `tutorials/multiphase/interFoam/laminar/damBreak/damBreak/`
+1. tuturial can be found `tutorials/multiphase/interFoam/laminar/damBreak/damBreak/`
 We set water zone through `setFiledsDic`
 ``` c++
 defaultFieldValues
@@ -259,4 +259,7 @@ regions
     }
 );
 ```
- ![demo](/img/ani.gif)
+ ![demo](/img/ani-bam.gif)
+ 
+ 2. create by gmsh, where flow from left side with speed of 1m/s.
+  ![demo](/img/ani.gif)
