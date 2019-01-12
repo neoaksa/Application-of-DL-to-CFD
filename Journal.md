@@ -171,6 +171,7 @@ The meaning of some important files:
 * `0/p` or `0/U`: boundary condition setting and flow field initialization files. p for pressure, U for velocity. Unit of variable is a row vector with 7 elements in order of: _Mass Length Time Temperature Quantity Current Luminous Intensity_. Other files in `0` folder: k - Kinematic energy, T - temperature.
 * `system/fvSchemes`: terms, schemes, numerical setting
 * `system/fvSolution`: tolerance, algorithms, and solvers controls
+* `system/decomposeParDict`: setting decomposition of mesh for paralell computing
 
 ### Step by Step for OpenFOAM
 1. Pre-processing
@@ -231,6 +232,22 @@ the numerical methods, and final tolerance for convergence of that quantity
  * we can also use command `refineMesh` to refine the mesh, the result looks like this:
  
  ![demo](/img/demoparaview2.png)
+ 
+### Runnning Parallel
+1. Decomposite mesh using `system/decomposeParDict`. Basicly, we need to choose method and its coefficients. More detail about paramater see [referce](https://cfd.direct/openfoam/user-guide/v6-running-applications-parallel/). The example is a example we use 8 subdomain(processors) with simple method in which coefficients are set as (2,4,1) in x,y,z directions.
+```
+numberOfSubdomains 8;
+
+method          simple;
+
+simpleCoeffs
+{
+    n               (2 4 1 ); //2*4*1=8
+    delta           0.001;
+}
+```
+2. run `decomposePar` to 
+
  
 ### Others
 * `#inculde` is as same as in C
