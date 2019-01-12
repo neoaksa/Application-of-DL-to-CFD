@@ -246,7 +246,9 @@ simpleCoeffs
     delta           0.001;
 }
 ```
-2. run `decomposePar` to 
+2. run `decomposePar` to generate a set of subfolder, one of each processor
+3. run openMPI in single machine `mpirun machines -np 8 icoFoam -parallel`, if we run on multi machine, we should add hostfile which indecates which is master and its slaves.
+4. recontruct mesh and data using `reconstructPar`
 
  
 ### Others
