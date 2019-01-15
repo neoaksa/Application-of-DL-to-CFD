@@ -20,8 +20,8 @@ done:
 1. Parallel computation
 2. 3 differenct shapes(sqaure, cycle and trapezoidal) in the water flow.
 3. Output vector plots for velocity.
+4. create mesh by gmesh tools.
 
 next:
 1. genrate raning model automatically
-2. how to use gmesh to create mesh
-3. float exception problem
+2. float exception problem
