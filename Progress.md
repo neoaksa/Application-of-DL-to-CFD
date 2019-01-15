@@ -23,5 +23,7 @@ done:
 4. create mesh by gmesh tools.
 
 next:
-1. genrate raning model automatically
-2. float exception problem
+1. genrate the model automatically
+2. __issue__: corant number raised too large
+  * trangle is error
+  * two square is error
