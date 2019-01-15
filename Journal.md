@@ -250,6 +250,17 @@ simpleCoeffs
 3. run openMPI in single machine `mpirun -np 8 solvername -parallel`, if we run on multi machine, we should add hostfile which indecates which is master and its slaves.
 4. recontruct mesh and data using `reconstructPar`
 
+### Creat Mesh by Gmesh
+1. Download gmesh from [gmesh](http://gmsh.info/)
+2. Open gmesh by run `./gmesh` under `bin` folder.
+3. add Point, line and plane surface by `Elemetary entities->Add`
+4. If we create 2D for Openfoam, we have to transfer it to 3D. Clike `Elemetary entities->Extrude->translate`, then choose the surface that you just created in 2D. 
+5. Add Boundary by `physical groups->surface`.
+6. Add Mesh from `Mesh->3D`. Then we can run `gmsh -3 <fileName>.geo` to transfer geo file to msh file.
+7. In Openfoam, run `gmshToFoam filename.msh` to transfer it to openfoam files under `polyMesh` folder.
+8. Remeber to change `polyMesh/boundary` file before run solver.
+
+![img](/img/Screenshot_20190115_011359.png)
  
 ### Others
 * `#inculde` is as same as in C
