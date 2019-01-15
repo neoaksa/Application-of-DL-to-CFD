@@ -27,3 +27,5 @@ next:
 2. __issue__: corant number raised too large
   * trangle is error
   * two square is error
+3. __issue__:A single simulation for 37 frames will take 1GB
+4. 
