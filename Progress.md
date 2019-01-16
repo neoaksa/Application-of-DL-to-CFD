@@ -18,14 +18,14 @@
 ### week2
 done:
 1. Parallel computation
-2. 3 differenct shapes(sqaure, cycle and trapezoidal) in the water flow.
-3. Output vector plots for velocity.
+2. Simulate single shapes(sqaure, cycle and trapezoidal) in the water flow.
+3. Output vector plots.
 4. create mesh by gmesh tools.
 
-next:
-1. genrate the model automatically
-2. __issue__: corant number raised too large
-  * trangle is error
-  * two square is error
-3. __issue__:A single simulation for 37 frames will take 1GB
-4. 
+issue:
+1. When I tried a triangle or some complex objects in the mesh, the error happen since it is not convergent I guess. 
+2. The files is too large, 1GB for 36 frames in a single simulate
+
+Next:
+1. How to use(or choose peak) frames in CNN
+2. How to create samples automatically
