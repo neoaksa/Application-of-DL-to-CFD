@@ -300,6 +300,6 @@ regions
   
   (Cylinder)
 
-  ![demo](/img/animation-trapzoidal.gif)
+  ![demo](/img/animation-square2-vector.gif)
   
-  (trapzoidal)
+  (trapzoidal with velocity vector)
