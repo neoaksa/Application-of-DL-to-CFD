@@ -16,16 +16,20 @@
 15. Deep learning solution discovery| |N| | | 
 
 ### week2
-done:
-1. Parallel computation
-2. Simulate single shapes(sqaure, cycle and trapezoidal) in the water flow.
-3. Output vector plots.
-4. create mesh by gmesh tools.
+Done:
 
-issue:
-1. When I tried a triangle or some complex objects in the mesh, the error happen since it is not convergent I guess. 
-2. The files is too large, 1GB for 36 frames in a single simulate
+1. Parallel computation in Openfoam
+2. Simulate single shapes(square, cycle and trapezoidal) in the water flow.
+3. Output vector plots.
+4. create mesh with gmesh tools,  time costing.
+
+Issue:
+
+1. When I tried a triangle or two objects in the mesh, the error happen since computation couldn't reach convergence.
+2. The files is too large, 1GB for 36 frames in a single simulate. This might be a problem when we create enough samples for CNN.
 
 Next:
+
 1. How to use(or choose peak) frames in CNN
 2. How to create samples automatically
+3. Know How solver works in the different situations.
