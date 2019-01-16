@@ -30,6 +30,12 @@ Issue:
 
 Next:
 
-1. How to use(or choose peak) frames in CNN
-2. How to create samples automatically
-3. Know How solver works in the different situations.
+~~1. How to use(or choose peak) frames in CNN~~
+~~2. How to create samples automatically~~
+~~3. Know How solver works in the different situations.~~
+
+1. understand the data meaning inside the frame files
+2. change the velocity and angle  of flow also the size of object
+3. simplify the animation, try "matplotlib.pyplot.quiver "
+4. find if any stable status in the simulation
+5. try to figure out the error of triangle issue
