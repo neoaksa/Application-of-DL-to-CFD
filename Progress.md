@@ -57,6 +57,5 @@ Issue:
 3. Number of samples are small(36), but number of frames are large(36\*150)
 
 Next:
-1. Label the samples
+1. Label the samples or LTSM
 2. Export Vector files automaticaly
-3. LTSM
