@@ -1,0 +1,7 @@
+#!/bin/sh
+cd "square_(-3,-3)_(3,-3)_(-3,3)_(3,3)_halfcircle/"
+./run
+cd "../square_(-3,-3)_(3,-3)_(-3,3)_(3,3)_circle/"
+./run
+cd "../square_(-3,-3)_(3,-3)_(-3,3)_(3,3)_cushion/"
+./run

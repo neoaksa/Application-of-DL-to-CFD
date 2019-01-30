@@ -1,0 +1,65 @@
+#!/bin/sh
+cd ${0%/*} || exit 1
+. $WM_PROJECT_DIR/bin/tools/RunFunctions    # Tutorial run fu
+speed=1
+sh="square"
+w=3 # half of width
+h=3 # half of height
+
+x_0=1
+y_0=0
+x_15=0.788675134594813 
+y_15=0.211324865405187 
+x_30=0.633974596215561 
+y_30=0.366025403784439 
+x_45=0.5              
+y_45=0.5               
+x_60=0.366025403784439 
+y_60=0.633974596215561 
+x_75=0.211324865405187 
+y_75=0.788675134594813 
+x_90=0 
+y_90=1                 
+
+echo "start"
+for i in {0..90..15}
+    do
+        var_x="x_${i}"
+        var_y="y_${i}"
+        
+        if [ -d $sh"_"$w"_"$h"_"$speed"_"$i ];then # delete files
+            rm -r $sh"_"$w"_"$h"_"$speed"_"$i
+        fi
+        mkdir $sh"_"$w"_"$h"_"$speed"_"$i
+        # copy essential files
+        cp -r $sh/{0,postProcessing,constant,Allrun,foam.foam,system}  $sh"_"$w"_"$h"_"$speed"_"$i/
+        # change angle of waterflow
+        sed -i "19s/.*/internalField   uniform (${!var_x} ${!var_y} 0);/"   $sh"_"$w"_"$h"_"$speed"_"$i"/0/U"
+        
+        # change the size of square
+        sed -i "24s/.*/(-$w   -$h  0)    /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+        sed -i "25s/.*/($w   -$h  0)     /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+        sed -i "26s/.*/(-$w   $h  0)     /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+        sed -i "27s/.*/($w   $h  0)      /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+                        
+        sed -i "36s/.*/(-$w   -$h  1)    /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+        sed -i "37s/.*/($w   -$h  1)     /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+        sed -i "38s/.*/(-$w   $h  1)     /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+        sed -i "39s/.*/($w   $h  1)      /"  $sh"_"$w"_"$h"_"$speed"_"$i"/constant/polyMesh/blockMeshDict"
+        # go through each folder run application
+        cd $sh"_"$w"_"$h"_"$speed"_"$i
+        rm -r [1-9]*
+        rm -r processor[0-7]
+        echo "clean done!"
+        runApplication blockMesh
+        echo "blockMesh done!"
+        runApplication decomposePar
+        echo "decompose done!"
+        runApplication mpirun -np 8 pisoFoam -parallel
+        echo "mpi done!"
+        runApplication reconstructPar
+        echo "reconstruct done!"
+        rm -r processor[0-7]
+        echo "delete temp files"
+        cd ..
+    done

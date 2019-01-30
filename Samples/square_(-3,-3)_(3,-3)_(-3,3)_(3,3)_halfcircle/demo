@@ -1,0 +1,23 @@
+#! /bin/bash./
+
+a=3.33
+b=3.3
+c=$(echo "$a + $b" | bc)
+d=$(echo "$a * $b" | bc)
+e=$(echo "scale=5; $a / $b" | bc)
+echo "c=a+b=$a+$b=$c"
+echo "d=a*b=$a*$b=$d"
+echo "e=a/b=$a/$b=$e"
+
+cos15=0.965925826289068
+sin15=0.258819045102521
+w=2.0
+h=6.0 # half of height
+x=$(echo "scale=5; $w * $cos15 + $h * $sin15" | bc)
+y=$(echo "scale=5; $h * $sin15" | bc)
+
+
+echo "-6 * 0.965925826289068 - (-2) * 0.258819045102521"
+
+echo "$x" 
+echo "$y"
