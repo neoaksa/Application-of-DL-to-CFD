@@ -42,18 +42,19 @@ Next:
 
 ### week3
 Done:
-1. Automatic generate samples by shape and angle of flow on seawolf.
-  * Flow angle is set from 0 degree to 90 degree with each step for 15 degree.
-  * Shape is configured under the script `run` in each subfolder.
-  * Samples generation can be found [here](https://github.com/neoaksa/Application-of-DL-to-CFD/tree/master/Samples)
-  * For automatically generate all sampels, `runlist` can be set to call all `run` scripts under each subfolder.
+1. Automatic generate samples according to the object shape and angle of flow on seawolf.
+  * Incoming flow angle is set from 0 degree to 90 degree with a step of 15 degree.
+  * Shape is configured under the script `run` in each subfolder. [Example](/Samples/square_(-3%2C-3)_(3%2C-3)_(-3%2C3)_(3%2C3)_circle/run)
+  * Samples generation can be found [here](/Samples)
+  * For automatically generate all sampels, `runlist` has be set to call all `run` scripts under each subfolder.
 2. Delete the temp files, only keep final frames
-3. 
+3. All samples can be found on seawolf, structure as follows:
+`shape folder / angle folder / paraview folder`
 
 Issue:
 1. Can not call pravaview GUI through docker
 2. Most of samples cannot reach a stable status.See [here](/img/square_3_3_1_45.png)
-3. Number of samples are small(36), but the number of frames are large(36\*150)
+3. Number of samples are small(36), but number of frames are large(36\*150)
 
 Next:
 1. Label the samples
