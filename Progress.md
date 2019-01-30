@@ -49,7 +49,7 @@ Done:
   * For automatically generate all sampels, `runlist` has be set to call all `run` scripts under each subfolder.
 2. Delete the temp files, only keep final frames
 3. All samples can be found on seawolf, structure as follows:
-`shape folder / angle folder / paraview folder`
+`shape folder / flow angle folder(0-90 degree) / paraview folder`
 
 Issue:
 1. Can not call pravaview GUI through docker
