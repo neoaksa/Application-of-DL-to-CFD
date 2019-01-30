@@ -39,3 +39,23 @@ Next:
 3. simplify the animation, try "matplotlib.pyplot.quiver "
 4. find if any stable status in the simulation
 5. try to figure out the error of triangle issue
+
+### week3
+Done:
+1. Automatic generate samples by shape and angle of flow on seawolf.
+  * Flow angle is set from 0 degree to 90 degree with each step for 15 degree.
+  * Shape is configured under the script `run` in each subfolder.
+  * Samples generation can be found [here](https://github.com/neoaksa/Application-of-DL-to-CFD/tree/master/Samples)
+  * For automatically generate all sampels, `runlist` can be set to call all `run` scripts under each subfolder.
+2. Delete the temp files, only keep final frames
+3. 
+
+Issue:
+1. Can not call pravaview GUI through docker
+2. Most of samples cannot reach a stable status.See [here](/img/square_3_3_1_45.png)
+3. Number of samples are small(36), but the number of frames are large(36\*150)
+
+Next:
+1. Label the samples
+2. Export Vector files automaticaly
+3. LTSM
