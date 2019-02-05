@@ -59,3 +59,51 @@ Issue:
 Next:
 1. Label the samples or LTSM
 2. Export Vector files automaticaly
+
+### week4
+1. Model summary
+the input is resized and cropped 2D gray picture( to save time) with size 42*53, filter is stetted as  36. 
+the validation data is the next frame of input. 
+```
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv_lst_m2d_1 (ConvLSTM2D)  (None, None, 42, 53, 36)  48096     
+_________________________________________________________________
+batch_normalization_1 (Batch (None, None, 42, 53, 36)  144       
+_________________________________________________________________
+conv_lst_m2d_2 (ConvLSTM2D)  (None, None, 42, 53, 36)  93456     
+_________________________________________________________________
+batch_normalization_2 (Batch (None, None, 42, 53, 36)  144       
+_________________________________________________________________
+conv_lst_m2d_3 (ConvLSTM2D)  (None, None, 42, 53, 36)  93456     
+_________________________________________________________________
+batch_normalization_3 (Batch (None, None, 42, 53, 36)  144       
+_________________________________________________________________
+conv_lst_m2d_4 (ConvLSTM2D)  (None, None, 42, 53, 36)  93456     
+_________________________________________________________________
+batch_normalization_4 (Batch (None, None, 42, 53, 36)  144       
+_________________________________________________________________
+conv3d_1 (Conv3D)            (None, None, 42, 53, 1)   973       
+=================================================================
+```
+Total params: 330,013
+Trainable params: 329,725
+Non-trainable params: 288
+2. Sample
+Openfoam outputs 300 frames( a circle in the center), I picked up the last 200th to 300th frames  which look like more dynamic stable. Then I randomly choose the start frame with its 30 following frames as a piece of sample. The total number of sample is 100. 
+3. Training
+Epoch sets as 300, and loss function is binary_corssentropy, optimizer is adadelta. 
+4. Result
+After 300 epoch, loss reached to 0.655. I also tried to use this model to predict 15 frames with its previous 15 actual frames. Result looks very wired. Right now I make epoch as 1000, waiting for the refreshed result.
+
+Done:
+1. Initial ConvLSTM
+
+Issue:
+1. Low accuracy
+2. Model modification
+3. Sample generation
+
+Next: 
+1. Improve model
+2. More samples
