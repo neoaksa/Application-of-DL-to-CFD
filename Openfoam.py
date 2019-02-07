@@ -14,7 +14,7 @@ from skimage import io, transform
 WIDTH = 42
 HEIGHT = 53
 n_frame = 30
-filter = 24
+filter = 12
 sample_size = 100
 epoch = 30
 step_pred = 1  # step_pred < n_frame
