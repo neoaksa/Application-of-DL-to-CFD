@@ -14,14 +14,14 @@ from skimage import io, transform
 WIDTH = 42
 HEIGHT = 53
 n_frame = 30
-filter = 12
+filter = 24
 sample_size = 100
 epoch = 30
 step_pred = 1  # step_pred < n_frame
 
 seq = Sequential()
 seq.add(ConvLSTM2D(filters=filter, kernel_size=(3, 3),
-                   input_shape=(None, WIDTH, HEIGHT, 1),
+                   input_shape=(None, WIDTH, HEIGHT, 3),
                    padding='same', return_sequences=True))
 seq.add(BatchNormalization())
 
@@ -37,7 +37,7 @@ seq.add(ConvLSTM2D(filters=filter, kernel_size=(3, 3),
                    padding='same', return_sequences=True))
 seq.add(BatchNormalization())
 
-seq.add(Conv3D(filters=1, kernel_size=(3, 3, 3),
+seq.add(Conv3D(filters=3, kernel_size=(3, 3, 3),
                activation='tanh',
                padding='same', data_format='channels_last'))
 seq.compile(loss='mean_squared_error', optimizer='adadelta')
@@ -49,9 +49,9 @@ all_images = []
 path = 'Sample/'
 for image_path in os.listdir(path):
   if image_path.endswith(".jpg"):
-    img = io.imread(path+image_path , as_grey=True)
+    img = io.imread(path+image_path , as_grey=False)
     img = img[54:222,108:320] #168,212
-    img = transform.resize(img,(WIDTH,HEIGHT,1))
+    img = transform.resize(img,(WIDTH,HEIGHT,3))
     # show image for testing
     # plt.imshow(img)
     # plt.show()
@@ -61,8 +61,8 @@ all_images = np.asarray(all_images,dtype=np.float)
 
 # create training sample
 
-x_all_samples = np.empty((0,n_frame,WIDTH,HEIGHT,1),dtype=np.float)
-y_all_samples = np.empty((0,n_frame,WIDTH,HEIGHT,1),dtype=np.float)
+x_all_samples = np.empty((0,n_frame,WIDTH,HEIGHT,3),dtype=np.float)
+y_all_samples = np.empty((0,n_frame,WIDTH,HEIGHT,3),dtype=np.float)
 
 for i in range(sample_size):
   start_frame = np.random.randint(0,all_images.shape[0]-n_frame-step_pred)
@@ -75,4 +75,3 @@ for i in range(sample_size):
 seq.fit(x_all_samples, y_all_samples, batch_size=16,
         epochs=epoch, validation_split=0.05)
 seq.save('openfoam.h5')
-
