@@ -115,3 +115,39 @@ Issue:
 Next: 
 1. Improve model
 2. More samples
+
+### week5
+1. Some questions last week
+* what's the time unit in control file
+- The unit of time is seconds. For example, if dt = 0.025, write internal = 4, then we generate each files every 0.1 second. 
+- color and axis of output picture
+The coming flow speed is 1m/s, which is represented by neutral color. The color of faster flow is warmer, while the color of slower flow is colder. The axis is pixel of picture, which is not real size of output of openfoam.
+
+2. Three models and their results
+A. Original model( many to many)
+![img](img/model1.png)
+We showed last week, result is not good.
+
+B. Second model( many to many)
+![img](img/model2.png)
+Compared to the first model, we used more convolutional LSTM layers(9 layers), then using more filter(48). After 100 epoches, the result is blow:
+![img](img/model2.gif)
+Figure1. Using 15 frames to predict 15 frames.
+
+C. Prednet
+This is a custom model which is created by coxlab. They successfully predict some videos clips for car driving. 
+![img](img/model3.png)
+There are two results. First result is based on the sample samples as the second model.
+![img](img/model3-1.gif)
+Second result is based on the samples whose time interval is doubled since I want to make the difference between two frames more significant.
+![img](img/model3-2.gif)
+
+3. Issue.
+A. I used MSE as cost function, after 150 epoches, all models can reach up to 0.0065 ~ 0.0089, but the prediction still not good enough. 
+B. How should I significant the flow color, rather than all domain.
+C. I used many to many model to train and predict frames, would it good to use many to one or one to many? ( I tried, but not enough time to modify the model)
+D. For the car driving case, they use lots of samples(Gb), should I added more samples? but even this circle case, our model can not learn well.
+
+4. next week
+1. sample optimization
+2. model optimization 
