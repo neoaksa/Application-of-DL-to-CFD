@@ -151,3 +151,30 @@ D. For the car driving case, they use lots of samples(Gb), should I added more s
 4. next week
 1. sample optimization
 2. model optimization 
+
+### Week6
+1. Done
+A. fix reading order bug and optimaze the three model:
+1.Training: use Nth frame to predict (N+1)th frame
+Prediction: use 1-10 frame to predict 11-20 frame, sliding window = 1 frame. ( only first few frame are good, since we use the predicting frames to do the prediction)
+
+![img](https://jie-tao.com/wp-content/uploads/2019/02/Webp.net-gifmaker-1-1.gif)
+
+2.Training: Nth frame to predict (N+10)th frame
+Prediction: use 1-10 frame to predict 11-20 frame, no sliding window. ( this is very good since all input are ground truth)
+
+![img](https://jie-tao.com/wp-content/uploads/2019/02/Webp.net-gifmaker-1.gif)
+
+3.Training: use Nth frame to predict (N+1)th frame
+Prediction: use one frame to predict next frame, like driving prediction (animation has a little problem. right side is prediction, left side is ground truth)
+
+![img](https://jie-tao.com/wp-content/uploads/2019/02/Webp.net-gifmaker.gif)
+
+2. Issue
+A. Learning still in a very stricted enviorment, without setting speed and angles
+B. Predict based on Predected frame is not good.
+
+3. Next week.
+TBD 
+A. more traning samples to learn speed and angles? (how to give the enviorment information? like initial speed and angles)
+B. how to close to a slover?
