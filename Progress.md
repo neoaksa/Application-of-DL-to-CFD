@@ -158,7 +158,7 @@ D. For the car driving case, they use lots of samples(Gb), should I added more s
 A. fix reading order bug and optimaze the three model:
 
 1.Training: use Nth frame to predict (N+1)th frame
-Prediction: use 1-10 frame to predict 11-20 frame, sliding window = 1 frame. ( only first few frame are good, since we use the predicting frames to do the prediction)
+Prediction: use 1-10 frame to predict 2-11 frame, sliding window = 1 frame. ( only first few frame are good, since we use the predicting frames to do the prediction)
 
 ![img](https://jie-tao.com/wp-content/uploads/2019/02/Webp.net-gifmaker-1-1.gif)
 
