@@ -183,3 +183,9 @@ TBD
 
 A. more traning samples to learn speed and angles? (how to give the enviorment information? like initial speed and angles)
 B. how to close to a slover?
+
+### Week 7
+
+![img](validation%20result-1.jpg?raw=true)
+
+ The 1st model( use 1-10th to predict 11-20th) even better than the 3rd one ( use 1-10th to predict 2-11th). The worst is 2nd one( rolling prediction). The result you can find in the attachment. ( the interesting thing is the sum-check line of model 2 in sum check is up and down, although the MSE line is increasing continuously)
