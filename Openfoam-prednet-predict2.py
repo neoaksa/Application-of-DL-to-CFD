@@ -61,7 +61,7 @@ for i in range(1,n_frame):
     ax = fig.add_subplot(122)
     plt.text(1, 3, 'Ground truth', fontsize=20)
 
-    toplot = sample_true[i+step, ::, ::, ::]
+    toplot = sample_true[i, ::, ::, ::]
 
     plt.imshow(toplot)
     plt.savefig('result/%i_animate.png' % (i + 1))

@@ -10,6 +10,7 @@ from keras import backend as K
 from keras.optimizers import Adam
 from keras.callbacks import LearningRateScheduler
 import pylab as plt
+import time
 
 # ------------
 # One to One model
@@ -36,7 +37,7 @@ Ahat_filt_sizes = (3, 3, 3, 3)
 R_filt_sizes = (3, 3, 3, 3)
 layer_loss_weights = np.array([1., 0., 0., 0.])  # weighting for each layer in final loss; "L_0" model:  [1, 0, 0, 0], "L_all": [1, 0.1, 0.1, 0.1]
 layer_loss_weights = np.expand_dims(layer_loss_weights, 1)
-nt = 16  # number of timesteps used for sequences in training
+nt = 11  # number of timesteps used for sequences in training
 time_loss_weights = 1./ (nt - 1) * np.ones((nt,1))  # equally weight all timesteps except the first
 time_loss_weights[0] = 0
 
@@ -93,7 +94,7 @@ for image_path in sorted(os.listdir(path)):
         # show image for testing
         # plt.imshow(img)
         # plt.show()
-        print(image_path+" completed! \n")
+        # print(image_path+" completed! \n")
         all_images.append(img)
 
 all_images = np.asarray(all_images,dtype=np.float)
@@ -115,7 +116,19 @@ for i in range(sample_size):
 lr_schedule = lambda epoch: 0.001 if epoch < 75 else 0.0001    # start with lr of 0.001 and then drop to 0.0001 after 75 epochs
 callbacks = [LearningRateScheduler(lr_schedule)]
 
-model.fit(x_all_samples, y_all_samples, batch_size=batch_size, callbacks=callbacks,
+# evaluate performance of hardware
+start_time = time.time()
+history = model.fit(x_all_samples, y_all_samples, batch_size=batch_size, callbacks=callbacks,
         epochs=nb_epoch, validation_split=0.05)
+print("--- %s seconds ---" % (time.time() - start_time))
 model.save('openfoam.h5')
-
+print(history.history.keys())
+# summarize history for loss
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+plt.savefig('loss.png')

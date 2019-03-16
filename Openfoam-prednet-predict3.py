@@ -31,8 +31,8 @@ all_images = np.asarray(all_images,dtype=np.float)
 
 # predict
 # predict 15 frame based on the given 15 frames
-n_frame = 11
-step = 11
+n_frame = 20
+step = 1
 start_frame = np.random.randint(0, all_images.shape[0] - n_frame)
 sample_true = all_images[start_frame:start_frame + n_frame, :, :, :]
 sample_prev = sample_true[:(int)(n_frame / 2), :, :, :]
@@ -46,7 +46,12 @@ sample_prev = sample_true[:(int)(n_frame / 2), :, :, :]
 #     sample_prev = np.concatenate((sample_prev, new), axis=0)
 new_pos = seq.predict(sample_prev[np.newaxis, :, :, :, :])
 
-for i in range(1,(int)(n_frame/2)+1):
+plt.imshow(new_pos[0,1,:,:,:])
+plt.show()
+
+for i in range(0,(int)(n_frame/2)):
+
+
     fig = plt.figure(figsize=(10, 5))
 
     ax = fig.add_subplot(121)
@@ -56,7 +61,7 @@ for i in range(1,(int)(n_frame/2)+1):
     # else:
     #     ax.text(1, 3, 'Initial trajectory', fontsize=20)
     ax.text(1, 3, 'Predictions !', fontsize=20, color='w')
-    toplot = newpos[0, i, ::, ::, ::]
+    toplot = new_pos[0, i, ::, ::, ::]
     plt.imshow(toplot)
 
     ax = fig.add_subplot(122)
