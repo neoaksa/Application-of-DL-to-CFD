@@ -19,6 +19,10 @@
 * Openfoam-validation-prednet(t+1)w(t+1).py: validation result for 1 timestep prediction through trained PredNet(t+1)
 * Openfoam-validation-prednet(t+n)w(t+10).py: validation result for rolling 10 timestep prediction through trained PredNet(t+1) or PredNet(t+n)
 
+### Model
+* openfoam.h5: PredNet(t+1) 
+* openfoam_stepforward.h5: PredNet(t+n)
+
 ## Result
 * Application of Deep Learning to Computational Fluid Dynamics.docx
 * Application of Deep Learning to Computational Fluid Dynamics.pptx
