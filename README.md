@@ -27,3 +27,5 @@
 * Application of Deep Learning to Computational Fluid Dynamics.docx
 * Application of Deep Learning to Computational Fluid Dynamics.pptx
 * Poster.pptx
+
+![poster](/Poster.jpg)
