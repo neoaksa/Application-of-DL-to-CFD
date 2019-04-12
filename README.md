@@ -30,7 +30,9 @@
 
 ## Thanks to:
 Dr.Greg Wolffe
+
 DEN: Distributed Execution Network
+
 Roberto Sanchez
 
 ![poster](/Poster.jpg)
