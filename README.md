@@ -28,4 +28,9 @@
 * Application of Deep Learning to Computational Fluid Dynamics.pptx
 * Poster.pptx
 
+## Thanks to:
+Dr.Greg Wolffe
+DEN: Distributed Execution Network
+Roberto Sanchez
+
 ![poster](/Poster.jpg)
